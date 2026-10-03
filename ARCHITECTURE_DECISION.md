@@ -1,5 +1,7 @@
 # Tampered-model generation：三种架构方案的决策
 
+[English](ARCHITECTURE_DECISION.en.md) | [中文](ARCHITECTURE_DECISION.md)
+
 日期：2026-10-02。范围：Work Plan 的第二类数据来源，即用开源实现生成带模型级标签的模型/checkpoint。现成 checkpoint 收集与后续 active generation 不属于此次决策。
 
 ## 建议

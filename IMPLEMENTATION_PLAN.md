@@ -1,5 +1,7 @@
 # Tampered LLM 数据生成流水线 implementation plan
 
+[English](IMPLEMENTATION_PLAN.en.md) | [中文](IMPLEMENTATION_PLAN.md)
+
 本计划将已选定的架构落实为具体开发任务：统一管理生成任务、checkpoint、验证与模型级标签；每类方法保留独立实现和运行环境，并在领域内复用成熟项目。
 
 本次交付是实施计划，尚未开始写流水线或运行训练。下文的文件、接口和命令均是拟实现内容；现有源码依据来自 tampered-llm-generation-research 中已 clone 的版本，完整 commit 见 repositories.json。计划不会把静态审查描述成已经成功复现。
