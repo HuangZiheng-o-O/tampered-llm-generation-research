@@ -158,8 +158,6 @@ BaseSpec 至少记录 model_id、revision、snapshot_path、config hash、tokeni
 
 ### 4.3 环境决策
 
-默认运行平台为 Linux + NVIDIA GPU。当前算力未确定，所以本计划将资源写成可配置 profile，不承诺某个 8B 作业能在某张卡上运行。
-
 core 环境使用 Python 3.11，依赖限定为 Typer、Pydantic、PyYAML 等轻量包，状态存储使用标准库 SQLite。各 worker 使用自己的 Python 和依赖锁：
 
 | 环境 | 以什么约束起步 | 必须特别验证 |

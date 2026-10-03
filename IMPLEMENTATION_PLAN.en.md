@@ -158,8 +158,6 @@ Each method's data preparation produces a separate artifact. Changing data, seed
 
 ### 4.3 Environment decision
 
-The default execution platform is Linux with NVIDIA GPUs. Available compute has not been determined, so resources are configurable profiles; this plan does not promise that a particular 8B job will run on a particular GPU.
-
 The core environment uses Python 3.11, lightweight dependencies such as Typer, Pydantic, and PyYAML, and standard-library SQLite for state. Each worker has its own Python version and dependency lock:
 
 | Environment | Starting constraints | Specific verification |
