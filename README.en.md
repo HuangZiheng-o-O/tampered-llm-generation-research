@@ -1,6 +1,6 @@
 # Tampered LLM Generation Research
 
-[English](README.en.md) | [Chinese](README.md)
+[English](README.md) | [中文](README.zh.md)
 
 A curated collection of 38 upstream repositories, source-based architecture analysis, and an implementation plan for generating model-level labeled tampered LLM checkpoints. The generation pipeline is planned; training and GPU reproduction have not yet been performed.
 
