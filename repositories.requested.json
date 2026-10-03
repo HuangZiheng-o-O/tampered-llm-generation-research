@@ -1,0 +1,241 @@
+{
+  "scope": "GitHub codebases explicitly linked in the two user-supplied research reports",
+  "repositories": [
+    {
+      "requested_repo": "bboylyg/BackdoorLLM",
+      "url": "https://github.com/bboylyg/BackdoorLLM.git",
+      "group": "01_backdoor",
+      "relative_path": "01_backdoor/BackdoorLLM"
+    },
+    {
+      "requested_repo": "Lyz1213/BadEdit",
+      "url": "https://github.com/Lyz1213/BadEdit.git",
+      "group": "01_backdoor",
+      "relative_path": "01_backdoor/BadEdit"
+    },
+    {
+      "requested_repo": "thunlp/OpenBackdoor",
+      "url": "https://github.com/thunlp/OpenBackdoor.git",
+      "group": "01_backdoor",
+      "relative_path": "01_backdoor/OpenBackdoor"
+    },
+    {
+      "requested_repo": "Vincent-HKUSTGZ/PEFTGuard",
+      "url": "https://github.com/Vincent-HKUSTGZ/PEFTGuard.git",
+      "group": "01_backdoor",
+      "relative_path": "01_backdoor/PEFTGuard"
+    },
+    {
+      "requested_repo": "SolidShen/BAIT",
+      "url": "https://github.com/SolidShen/BAIT.git",
+      "group": "01_backdoor",
+      "relative_path": "01_backdoor/BAIT"
+    },
+    {
+      "requested_repo": "usnistgov/trojai",
+      "url": "https://github.com/usnistgov/trojai.git",
+      "group": "01_backdoor",
+      "relative_path": "01_backdoor/trojai"
+    },
+    {
+      "requested_repo": "locuslab/open-unlearning",
+      "url": "https://github.com/locuslab/open-unlearning.git",
+      "group": "02_unlearning",
+      "relative_path": "02_unlearning/open-unlearning"
+    },
+    {
+      "requested_repo": "zorache/model-tampering-evals",
+      "url": "https://github.com/zorache/model-tampering-evals.git",
+      "group": "02_unlearning",
+      "relative_path": "02_unlearning/model-tampering-evals"
+    },
+    {
+      "requested_repo": "centerforaisafety/wmdp",
+      "url": "https://github.com/centerforaisafety/wmdp.git",
+      "group": "02_unlearning",
+      "relative_path": "02_unlearning/wmdp"
+    },
+    {
+      "requested_repo": "facebookresearch/LUNAR",
+      "url": "https://github.com/facebookresearch/LUNAR.git",
+      "group": "02_unlearning",
+      "relative_path": "02_unlearning/LUNAR"
+    },
+    {
+      "requested_repo": "criticalml-uw/TamperBench",
+      "url": "https://github.com/criticalml-uw/TamperBench.git",
+      "group": "03_parameter_space_jailbreaking",
+      "relative_path": "03_parameter_space_jailbreaking/TamperBench"
+    },
+    {
+      "requested_repo": "andyrdt/refusal_direction",
+      "url": "https://github.com/andyrdt/refusal_direction.git",
+      "group": "03_parameter_space_jailbreaking",
+      "relative_path": "03_parameter_space_jailbreaking/refusal_direction"
+    },
+    {
+      "requested_repo": "BeyonderXX/ShadowAlignment",
+      "url": "https://github.com/BeyonderXX/ShadowAlignment.git",
+      "group": "03_parameter_space_jailbreaking",
+      "relative_path": "03_parameter_space_jailbreaking/ShadowAlignment"
+    },
+    {
+      "requested_repo": "LLM-Tuning-Safety/LLMs-Finetuning-Safety",
+      "url": "https://github.com/LLM-Tuning-Safety/LLMs-Finetuning-Safety.git",
+      "group": "03_parameter_space_jailbreaking",
+      "relative_path": "03_parameter_space_jailbreaking/LLMs-Finetuning-Safety"
+    },
+    {
+      "requested_repo": "CryptoAILab/misalignment",
+      "url": "https://github.com/CryptoAILab/misalignment.git",
+      "group": "03_parameter_space_jailbreaking",
+      "relative_path": "03_parameter_space_jailbreaking/misalignment"
+    },
+    {
+      "requested_repo": "AlignmentResearch/safety-gap",
+      "url": "https://github.com/AlignmentResearch/safety-gap.git",
+      "group": "03_parameter_space_jailbreaking",
+      "relative_path": "03_parameter_space_jailbreaking/safety-gap"
+    },
+    {
+      "requested_repo": "gunnusravani/Expert_aware_refusal_steering",
+      "url": "https://github.com/gunnusravani/Expert_aware_refusal_steering.git",
+      "group": "03_parameter_space_jailbreaking",
+      "relative_path": "03_parameter_space_jailbreaking/Expert_aware_refusal_steering"
+    },
+    {
+      "requested_repo": "cnut1648/Model-Fingerprint",
+      "url": "https://github.com/cnut1648/Model-Fingerprint.git",
+      "group": "04_fingerprinting",
+      "relative_path": "04_fingerprinting/Model-Fingerprint"
+    },
+    {
+      "requested_repo": "SewoongLab/scalable-fingerprinting-of-llms",
+      "url": "https://github.com/SewoongLab/scalable-fingerprinting-of-llms.git",
+      "group": "04_fingerprinting",
+      "relative_path": "04_fingerprinting/scalable-fingerprinting-of-llms"
+    },
+    {
+      "requested_repo": "sentient-agi/mlprints",
+      "url": "https://github.com/sentient-agi/mlprints.git",
+      "group": "04_fingerprinting",
+      "relative_path": "04_fingerprinting/mlprints"
+    },
+    {
+      "requested_repo": "IntelliSys-Lab/iSeal",
+      "url": "https://github.com/IntelliSys-Lab/iSeal.git",
+      "group": "04_fingerprinting",
+      "relative_path": "04_fingerprinting/iSeal"
+    },
+    {
+      "requested_repo": "Xuzhenhua55/CTCC",
+      "url": "https://github.com/Xuzhenhua55/CTCC.git",
+      "group": "04_fingerprinting",
+      "relative_path": "04_fingerprinting/CTCC"
+    },
+    {
+      "requested_repo": "zjunlp/EasyEdit",
+      "url": "https://github.com/zjunlp/EasyEdit.git",
+      "group": "05_knowledge_editing",
+      "relative_path": "05_knowledge_editing/EasyEdit"
+    },
+    {
+      "requested_repo": "kmeng01/rome",
+      "url": "https://github.com/kmeng01/rome.git",
+      "group": "05_knowledge_editing",
+      "relative_path": "05_knowledge_editing/rome"
+    },
+    {
+      "requested_repo": "kmeng01/memit",
+      "url": "https://github.com/kmeng01/memit.git",
+      "group": "05_knowledge_editing",
+      "relative_path": "05_knowledge_editing/memit"
+    },
+    {
+      "requested_repo": "scalable-model-editing/unified-model-editing",
+      "url": "https://github.com/scalable-model-editing/unified-model-editing.git",
+      "group": "05_knowledge_editing",
+      "relative_path": "05_knowledge_editing/unified-model-editing"
+    },
+    {
+      "requested_repo": "TeunvdWeij/sandbagging",
+      "url": "https://github.com/TeunvdWeij/sandbagging.git",
+      "group": "06_capability_suppression",
+      "relative_path": "06_capability_suppression/TeunvdWeij--sandbagging"
+    },
+    {
+      "requested_repo": "FabienRoger/sandbagging",
+      "url": "https://github.com/FabienRoger/sandbagging.git",
+      "group": "06_capability_suppression",
+      "relative_path": "06_capability_suppression/FabienRoger--sandbagging"
+    },
+    {
+      "requested_repo": "AI-Safety-Institute/sandbagging_auditing_games",
+      "url": "https://github.com/AI-Safety-Institute/sandbagging_auditing_games.git",
+      "group": "06_capability_suppression",
+      "relative_path": "06_capability_suppression/sandbagging_auditing_games"
+    },
+    {
+      "requested_repo": "azshue/AutoPoison",
+      "url": "https://github.com/azshue/AutoPoison.git",
+      "group": "07_bias_injection",
+      "relative_path": "07_bias_injection/AutoPoison"
+    },
+    {
+      "requested_repo": "GMorgulis/Subliminal-Steering-2026-Code",
+      "url": "https://github.com/GMorgulis/Subliminal-Steering-2026-Code.git",
+      "group": "07_bias_injection",
+      "relative_path": "07_bias_injection/Subliminal-Steering-2026-Code"
+    },
+    {
+      "requested_repo": "modelcloud/gptqmodel",
+      "url": "https://github.com/modelcloud/gptqmodel.git",
+      "group": "08_quantization_and_pruning",
+      "relative_path": "08_quantization_and_pruning/gptqmodel"
+    },
+    {
+      "requested_repo": "mit-han-lab/llm-awq",
+      "url": "https://github.com/mit-han-lab/llm-awq.git",
+      "group": "08_quantization_and_pruning",
+      "relative_path": "08_quantization_and_pruning/llm-awq"
+    },
+    {
+      "requested_repo": "locuslab/wanda",
+      "url": "https://github.com/locuslab/wanda.git",
+      "group": "08_quantization_and_pruning",
+      "relative_path": "08_quantization_and_pruning/wanda"
+    },
+    {
+      "requested_repo": "ist-daslab/sparsegpt",
+      "url": "https://github.com/ist-daslab/sparsegpt.git",
+      "group": "08_quantization_and_pruning",
+      "relative_path": "08_quantization_and_pruning/sparsegpt"
+    },
+    {
+      "requested_repo": "hartvigsen-group/composable-interventions",
+      "url": "https://github.com/hartvigsen-group/composable-interventions.git",
+      "group": "09_composition",
+      "relative_path": "09_composition/composable-interventions"
+    },
+    {
+      "requested_repo": "arcee-ai/mergekit",
+      "url": "https://github.com/arcee-ai/mergekit.git",
+      "group": "09_composition",
+      "relative_path": "09_composition/mergekit"
+    },
+    {
+      "requested_repo": "LUMIA-Group/AWM",
+      "url": "https://github.com/LUMIA-Group/AWM.git",
+      "group": "10_provenance_analysis",
+      "relative_path": "10_provenance_analysis/AWM"
+    }
+  ],
+  "source_url_corrections": [
+    {
+      "mentioned_address": "https://github.com/noahshen/BAIT",
+      "http_status": 404,
+      "used_address": "https://github.com/SolidShen/BAIT",
+      "reason": "Invalid BAIT URL in the research reports; used the available official BAIT repository also mentioned in the reports. This is not an HTTP redirect or a verified GitHub repository alias."
+    }
+  ]
+}

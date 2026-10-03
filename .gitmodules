@@ -1,0 +1,151 @@
+[submodule "01_backdoor/BAIT"]
+	path = 01_backdoor/BAIT
+	url = https://github.com/SolidShen/BAIT.git
+
+[submodule "01_backdoor/BackdoorLLM"]
+	path = 01_backdoor/BackdoorLLM
+	url = https://github.com/bboylyg/BackdoorLLM.git
+
+[submodule "01_backdoor/BadEdit"]
+	path = 01_backdoor/BadEdit
+	url = https://github.com/Lyz1213/BadEdit.git
+
+[submodule "01_backdoor/OpenBackdoor"]
+	path = 01_backdoor/OpenBackdoor
+	url = https://github.com/thunlp/OpenBackdoor.git
+
+[submodule "01_backdoor/PEFTGuard"]
+	path = 01_backdoor/PEFTGuard
+	url = https://github.com/Vincent-HKUSTGZ/PEFTGuard.git
+
+[submodule "01_backdoor/trojai"]
+	path = 01_backdoor/trojai
+	url = https://github.com/usnistgov/trojai.git
+
+[submodule "02_unlearning/LUNAR"]
+	path = 02_unlearning/LUNAR
+	url = https://github.com/facebookresearch/LUNAR.git
+
+[submodule "02_unlearning/model-tampering-evals"]
+	path = 02_unlearning/model-tampering-evals
+	url = https://github.com/zorache/model-tampering-evals.git
+
+[submodule "02_unlearning/open-unlearning"]
+	path = 02_unlearning/open-unlearning
+	url = https://github.com/locuslab/open-unlearning.git
+
+[submodule "02_unlearning/wmdp"]
+	path = 02_unlearning/wmdp
+	url = https://github.com/centerforaisafety/wmdp.git
+
+[submodule "03_parameter_space_jailbreaking/Expert_aware_refusal_steering"]
+	path = 03_parameter_space_jailbreaking/Expert_aware_refusal_steering
+	url = https://github.com/gunnusravani/Expert_aware_refusal_steering.git
+
+[submodule "03_parameter_space_jailbreaking/LLMs-Finetuning-Safety"]
+	path = 03_parameter_space_jailbreaking/LLMs-Finetuning-Safety
+	url = https://github.com/LLM-Tuning-Safety/LLMs-Finetuning-Safety.git
+
+[submodule "03_parameter_space_jailbreaking/ShadowAlignment"]
+	path = 03_parameter_space_jailbreaking/ShadowAlignment
+	url = https://github.com/BeyonderXX/ShadowAlignment.git
+
+[submodule "03_parameter_space_jailbreaking/TamperBench"]
+	path = 03_parameter_space_jailbreaking/TamperBench
+	url = https://github.com/criticalml-uw/TamperBench.git
+
+[submodule "03_parameter_space_jailbreaking/misalignment"]
+	path = 03_parameter_space_jailbreaking/misalignment
+	url = https://github.com/CryptoAILab/misalignment.git
+
+[submodule "03_parameter_space_jailbreaking/refusal_direction"]
+	path = 03_parameter_space_jailbreaking/refusal_direction
+	url = https://github.com/andyrdt/refusal_direction.git
+
+[submodule "03_parameter_space_jailbreaking/safety-gap"]
+	path = 03_parameter_space_jailbreaking/safety-gap
+	url = https://github.com/AlignmentResearch/safety-gap.git
+
+[submodule "04_fingerprinting/CTCC"]
+	path = 04_fingerprinting/CTCC
+	url = https://github.com/Xuzhenhua55/CTCC.git
+
+[submodule "04_fingerprinting/Model-Fingerprint"]
+	path = 04_fingerprinting/Model-Fingerprint
+	url = https://github.com/cnut1648/Model-Fingerprint.git
+
+[submodule "04_fingerprinting/iSeal"]
+	path = 04_fingerprinting/iSeal
+	url = https://github.com/IntelliSys-Lab/iSeal.git
+
+[submodule "04_fingerprinting/mlprints"]
+	path = 04_fingerprinting/mlprints
+	url = https://github.com/sentient-agi/mlprints.git
+
+[submodule "04_fingerprinting/scalable-fingerprinting-of-llms"]
+	path = 04_fingerprinting/scalable-fingerprinting-of-llms
+	url = https://github.com/SewoongLab/scalable-fingerprinting-of-llms.git
+
+[submodule "05_knowledge_editing/EasyEdit"]
+	path = 05_knowledge_editing/EasyEdit
+	url = https://github.com/zjunlp/EasyEdit.git
+
+[submodule "05_knowledge_editing/memit"]
+	path = 05_knowledge_editing/memit
+	url = https://github.com/kmeng01/memit.git
+
+[submodule "05_knowledge_editing/rome"]
+	path = 05_knowledge_editing/rome
+	url = https://github.com/kmeng01/rome.git
+
+[submodule "05_knowledge_editing/unified-model-editing"]
+	path = 05_knowledge_editing/unified-model-editing
+	url = https://github.com/scalable-model-editing/unified-model-editing.git
+
+[submodule "06_capability_suppression/FabienRoger--sandbagging"]
+	path = 06_capability_suppression/FabienRoger--sandbagging
+	url = https://github.com/FabienRoger/sandbagging.git
+
+[submodule "06_capability_suppression/TeunvdWeij--sandbagging"]
+	path = 06_capability_suppression/TeunvdWeij--sandbagging
+	url = https://github.com/TeunvdWeij/sandbagging.git
+
+[submodule "06_capability_suppression/sandbagging_auditing_games"]
+	path = 06_capability_suppression/sandbagging_auditing_games
+	url = https://github.com/AI-Safety-Institute/sandbagging_auditing_games.git
+
+[submodule "07_bias_injection/AutoPoison"]
+	path = 07_bias_injection/AutoPoison
+	url = https://github.com/azshue/AutoPoison.git
+
+[submodule "07_bias_injection/Subliminal-Steering-2026-Code"]
+	path = 07_bias_injection/Subliminal-Steering-2026-Code
+	url = https://github.com/GMorgulis/Subliminal-Steering-2026-Code.git
+
+[submodule "08_quantization_and_pruning/gptqmodel"]
+	path = 08_quantization_and_pruning/gptqmodel
+	url = https://github.com/modelcloud/gptqmodel.git
+
+[submodule "08_quantization_and_pruning/llm-awq"]
+	path = 08_quantization_and_pruning/llm-awq
+	url = https://github.com/mit-han-lab/llm-awq.git
+
+[submodule "08_quantization_and_pruning/sparsegpt"]
+	path = 08_quantization_and_pruning/sparsegpt
+	url = https://github.com/ist-daslab/sparsegpt.git
+
+[submodule "08_quantization_and_pruning/wanda"]
+	path = 08_quantization_and_pruning/wanda
+	url = https://github.com/locuslab/wanda.git
+
+[submodule "09_composition/composable-interventions"]
+	path = 09_composition/composable-interventions
+	url = https://github.com/hartvigsen-group/composable-interventions.git
+
+[submodule "09_composition/mergekit"]
+	path = 09_composition/mergekit
+	url = https://github.com/arcee-ai/mergekit.git
+
+[submodule "10_provenance_analysis/AWM"]
+	path = 10_provenance_analysis/AWM
+	url = https://github.com/LUMIA-Group/AWM.git
