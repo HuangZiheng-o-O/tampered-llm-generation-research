@@ -1,4 +1,5 @@
-# Dataset Design
+# IGNORE until I update this around our most recent meeting. -- Aidan
+## Dataset Design
 
 [README](README.md) · [Architecture decision](ARCHITECTURE_DECISION.en.md) · [Implementation plan](IMPLEMENTATION_PLAN.en.md)
 
