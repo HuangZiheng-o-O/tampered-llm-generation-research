@@ -2,7 +2,10 @@
 
 [English](README.md) | [中文](README.zh.md)
 
-A curated collection of 38 upstream repositories, source-based architecture analysis, and an implementation plan for generating model-level labeled tampered LLM checkpoints. The generation pipeline is planned; training and GPU reproduction have not yet been performed.
+A curated collection of 38 upstream repositories, source-based architecture analysis, and an implementation plan for generating model-level labeled tampered LLM checkpoints. A small-batch Llama-2-7B unlearning pilot now has runnable code and GPU smoke-test receipts; its behavior evaluation and scale decision are tracked separately.
+
+[Llama-2-7B unlearning pilot: research, protocol, code, and current receipts](unlearning_pilot/RESEARCH_AND_PROTOCOL_ZH.md)
+[Pilot measurements and result ledger (Chinese)](unlearning_pilot/PILOT_REPORT_ZH.md)
 
 ## Obtain upstream source code
 

@@ -2,7 +2,10 @@
 
 [English](README.md) | [中文](README.zh.md)
 
-A curated collection of 38 upstream repositories, source-based architecture analysis, and an implementation plan for generating model-level labeled tampered LLM checkpoints. The generation pipeline is planned; training and GPU reproduction have not yet been performed.
+本仓库收录 38 个上游项目、架构分析和模型生成计划。准确 Llama-2-7B 基座上的小批量遗忘试验已有可运行代码和 GPU 单步验收收据；效果评估和扩充数量另行记录。
+
+[Llama-2-7B 遗忘试验：代码调查、操作协议与当前收据](unlearning_pilot/RESEARCH_AND_PROTOCOL_ZH.md)
+[小批量试验的实际数据与结果](unlearning_pilot/PILOT_REPORT_ZH.md)
 
 ## 获取第三方源码
 
