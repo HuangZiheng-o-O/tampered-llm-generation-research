@@ -78,6 +78,7 @@ def inspect(base: Path, data: Path, output: Path, stage: str,
             raise ValueError("Forget and retain questions overlap")
     if stage == "unlearn" and parent_adapter is None:
         raise ValueError("Unlearning requires the completed SFT parent adapter")
+    recovery = None
     if parent_adapter is not None:
         parent_adapter = parent_adapter.expanduser().resolve(strict=True)
         if not (parent_adapter / "adapter_config.json").is_file():
@@ -88,17 +89,37 @@ def inspect(base: Path, data: Path, output: Path, stage: str,
             raise ValueError(f"SFT adapter declares another base: {declared_base}")
         if not (parent_adapter / "adapter_model.safetensors").is_file():
             raise ValueError("SFT adapter weights are missing")
-        parent_manifest = parent_adapter.parent / "manifest.json"
+        parent_dir = parent_adapter.parent
+        if parent_dir.name.startswith("checkpoint-"):
+            if stage == "unlearn":
+                raise ValueError("Unlearning requires a completed SFT, not a partial checkpoint")
+            parent_run = parent_dir.parent
+            recovery_path = parent_run / "recovery_checkpoint.json"
+            recovery = json.loads(recovery_path.read_text())
+            try:
+                recovery_step = int(parent_dir.name.removeprefix("checkpoint-"))
+            except ValueError as error:
+                raise ValueError("Invalid checkpoint number") from error
+            if (recovery.get("last_valid_step") != recovery_step or
+                    Path(recovery.get("adapter", "")).resolve() != parent_adapter):
+                raise ValueError("Recovery receipt does not match parent checkpoint")
+        else:
+            parent_run = parent_dir
+        parent_manifest = parent_run / "manifest.json"
         if not parent_manifest.is_file():
             raise ValueError("SFT parent manifest is missing")
         parent = json.loads(parent_manifest.read_text())
-        if (parent.get("stage") != "sft" or
-                parent.get("status") != "training_complete_evaluation_pending" or
+        expected_parent_stage = "retain_sft" if stage == "retain_sft" else "sft"
+        required_status = ("interrupted_by_personal_disk_quota" if recovery else
+                           "training_complete_evaluation_pending")
+        if (parent.get("stage") != expected_parent_stage or
+                parent.get("status") != required_status or
                 parent.get("base_model_id") != EXPECTED_BASE or
                 parent.get("base_config_sha256") != sha256(config_path) or
                 parent.get("data", {}).get("full.json", {}).get("sha256") !=
                 sha256(data / "full.json") or
-                parent.get("adapter_sha256") != sha256(parent_adapter / "adapter_model.safetensors")):
+                (not recovery and parent.get("adapter_sha256") !=
+                 sha256(parent_adapter / "adapter_model.safetensors"))):
             raise ValueError("SFT parent base or full training data does not match")
     if output.exists():
         raise ValueError(f"Output path already exists: {output}")
@@ -117,6 +138,11 @@ def inspect(base: Path, data: Path, output: Path, stage: str,
         "parent_adapter": str(parent_adapter) if parent_adapter else None,
         "parent_adapter_sha256": (
             sha256(parent_adapter / "adapter_model.safetensors") if parent_adapter else None),
+        "recovery": ({"checkpoint_step": recovery_step,
+                      "parent_run": str(parent_run),
+                      "original_hyperparameters": parent.get("hyperparameters", {}),
+                      "recovery_receipt_sha256": sha256(recovery_path)}
+                     if recovery else None),
         "output": str(output),
     }
 

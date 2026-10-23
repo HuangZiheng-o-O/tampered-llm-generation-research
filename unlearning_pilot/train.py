@@ -58,6 +58,8 @@ def arguments() -> argparse.Namespace:
     p.add_argument("--beta", type=float, default=0.1)
     p.add_argument("--steering-coeff", type=float, default=2.0)
     p.add_argument("--seed", type=int, default=42)
+    p.add_argument("--skip-examples", type=int, default=0,
+                   help="Only for resuming a verified partial SFT checkpoint")
     p.add_argument("--adapter-rank", type=int, default=8)
     p.add_argument("--adapter-alpha", type=int, default=16)
     p.add_argument("--adapter-targets", choices=("core", "all"), default="core")
@@ -67,11 +69,10 @@ def arguments() -> argparse.Namespace:
         p.error("--method is required for unlearning")
     if args.stage != "unlearn" and args.method is not None:
         p.error("--method is only valid for unlearning")
-    if args.stage == "retain_sft" and args.parent_adapter is not None:
-        p.error("retain_sft starts from the raw base, without a parent adapter")
     if (min(args.steps, args.accumulation, args.max_length) < 1 or
             args.lr <= 0 or args.checkpoint_every < 0 or
-            args.adapter_rank < 1 or args.adapter_alpha < 1):
+            args.adapter_rank < 1 or args.adapter_alpha < 1 or
+            args.skip_examples < 0):
         p.error("steps, accumulation, max-length and lr must be positive")
     return args
 
@@ -158,13 +159,32 @@ def _write_json(path: Path, data: dict) -> None:
 
 
 def save_adapter(model, destination: Path) -> None:
-    """Keep a portable HF base ID in PEFT metadata; the local path stays in the manifest."""
+    """Validate weights before exposing a checkpoint as a usable adapter."""
+    from safetensors import safe_open
+
+    if destination.exists():
+        raise FileExistsError(f"Adapter destination already exists: {destination}")
+    working = destination.with_name(destination.name + ".writing")
+    if working.exists():
+        raise FileExistsError(f"An incomplete adapter save needs inspection: {working}")
+    working.parent.mkdir(parents=True, exist_ok=True)
     for config in model.peft_config.values():
         config.base_model_name_or_path = EXPECTED_BASE
-    model.save_pretrained(str(destination), safe_serialization=True)
+    model.save_pretrained(str(working), safe_serialization=True)
+    if not (working / "adapter_config.json").is_file():
+        raise ValueError("PEFT did not save adapter_config.json")
+    weight_file = working / "adapter_model.safetensors"
+    with safe_open(str(weight_file), framework="pt", device="cpu") as tensors:
+        keys = list(tensors.keys())
+        if not keys:
+            raise ValueError("The saved adapter contains no tensors")
+        for key in keys:
+            tensors.get_tensor(key)  # detect a truncated body as well as a broken header
+    working.rename(destination)
 
 
 def train(args: argparse.Namespace, manifest: dict) -> None:
+    total_start = time.monotonic()
     import torch
     from transformers import AutoTokenizer
     from unlearning_pilot.losses import (graddiff, masked_activation_mse,
@@ -216,6 +236,10 @@ def train(args: argparse.Namespace, manifest: dict) -> None:
               "retain_sft": ("retain90.json",),
               "unlearn": ("forget10.json", "retain90.json")}[args.stage]
     examples = {name: ShuffledCycle(read_jsonl(args.data / name), rng) for name in source}
+    if args.skip_examples:
+        source_name = "full.json" if args.stage == "sft" else "retain90.json"
+        for _ in range(args.skip_examples):
+            examples[source_name].next()
     if args.method == "RMU":
         control = torch.rand((1, 1, 4096), generator=torch.Generator().manual_seed(args.seed))
         control = (control / control.norm() * args.steering_coeff).to(train_device)
@@ -243,6 +267,7 @@ def train(args: argparse.Namespace, manifest: dict) -> None:
         "reference_device": args.reference_device if reference is not None else None,
         "adapter_rank": adapter_config.r, "adapter_alpha": adapter_config.lora_alpha,
         "adapter_targets": sorted(adapter_config.target_modules),
+        "skip_examples": args.skip_examples,
     }
     _write_json(output / "manifest.json", manifest)
     try:
@@ -315,8 +340,14 @@ def train(args: argparse.Namespace, manifest: dict) -> None:
         manifest["adapter_sha256"] = sha256(adapter_dir / "adapter_model.safetensors")
         manifest["status"] = "training_complete_evaluation_pending"
         manifest["data_visits"] = {name: cycle.visits for name, cycle in examples.items()}
+        manifest["new_data_visits"] = {
+            name: cycle.visits - args.skip_examples if args.stage != "unlearn" else cycle.visits
+            for name, cycle in examples.items()}
         manifest["elapsed_seconds"] = round(time.monotonic() - start, 1)
+        manifest["total_elapsed_seconds"] = round(time.monotonic() - total_start, 1)
         manifest["peak_train_gpu_bytes"] = torch.cuda.max_memory_allocated(train_device)
+        manifest["peak_reference_gpu_bytes"] = (
+            torch.cuda.max_memory_allocated(ref_device) if reference is not None else None)
         _write_json(output / "manifest.json", manifest)
     except BaseException as error:
         manifest["status"] = "failed"
@@ -329,6 +360,20 @@ def main() -> None:
     args = arguments()
     manifest = inspect(args.base, args.data, args.output, args.stage,
                        args.parent_adapter)
+    recovery = manifest.get("recovery")
+    if recovery:
+        original = recovery["original_hyperparameters"]
+        expected_skip = recovery["checkpoint_step"] * original["accumulation"]
+        if (args.skip_examples != expected_skip or
+                args.steps != original["steps"] - recovery["checkpoint_step"] or
+                args.accumulation != original["accumulation"] or
+                args.max_length != original["max_length"] or
+                args.seed != original["seed"] or args.lr != original["lr"]):
+            raise ValueError("Recovery must continue the exact remaining data order and training recipe")
+        manifest["optimizer_state_note"] = (
+            "The original AdamW state was not checkpointed; the recovered run starts a fresh optimizer.")
+    elif args.skip_examples:
+        raise ValueError("Skipping examples requires a verified partial SFT checkpoint")
     if args.preflight_only:
         print(json.dumps(manifest, indent=2, ensure_ascii=False))
         return

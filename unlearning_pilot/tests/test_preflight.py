@@ -56,6 +56,34 @@ class PreflightTest(unittest.TestCase):
                               "retain_sft")
         self.assertEqual(retain_plan["data"]["retain90.json"]["rows"], 1)
 
+    def test_retain_only_continuation_requires_retain_parent(self):
+        planned = inspect(self.base, self.data, self.parent.parent / "retain_new", "retain_sft")
+        planned["status"] = "training_complete_evaluation_pending"
+        planned["adapter_sha256"] = sha256(self.parent / "adapter" / "adapter_model.safetensors")
+        self.parent_manifest.write_text(json.dumps(planned))
+        continued = inspect(self.base, self.data, self.parent.parent / "continued_retain",
+                            "retain_sft", self.parent / "adapter")
+        self.assertEqual(continued["parent_adapter_sha256"], planned["adapter_sha256"])
+
+    def test_verified_partial_checkpoint_can_resume_sft_only(self):
+        checkpoint = self.parent / "checkpoint-1" / "adapter"
+        checkpoint.mkdir(parents=True)
+        for name in ("adapter_config.json", "adapter_model.safetensors"):
+            (checkpoint / name).write_bytes((self.parent / "adapter" / name).read_bytes())
+        planned = inspect(self.base, self.data, self.parent.parent / "sft_new", "sft")
+        planned["status"] = "interrupted_by_personal_disk_quota"
+        planned["hyperparameters"] = {"steps": 2, "accumulation": 1,
+                                      "max_length": 192, "seed": 42, "lr": 1e-4}
+        self.parent_manifest.write_text(json.dumps(planned))
+        (self.parent / "recovery_checkpoint.json").write_text(json.dumps({
+            "last_valid_step": 1, "adapter": str(checkpoint)}))
+        resumed = inspect(self.base, self.data, self.parent.parent / "continued", "sft",
+                          checkpoint)
+        self.assertEqual(resumed["recovery"]["checkpoint_step"], 1)
+        with self.assertRaisesRegex(ValueError, "completed SFT"):
+            inspect(self.base, self.data, self.parent.parent / "unlearn", "unlearn",
+                    checkpoint)
+
     def test_rejects_stopped_sft_parent(self):
         planned = inspect(self.base, self.data, self.parent.parent / "sft_new", "sft")
         planned["status"] = "stopped_tokenizer_boundary_error"
