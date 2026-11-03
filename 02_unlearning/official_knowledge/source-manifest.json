@@ -1,0 +1,29 @@
+{
+  "sources": {
+    "bio_1k_train.arrow": {
+      "url": "https://huggingface.co/datasets/alex-karev/biographies/resolve/f724ba85ffd01f046626c193c1a99385a7a60038/data/1k/train/data-00000-of-00001.arrow",
+      "bytes": 8168840,
+      "sha256": "19b7154352955e86428872ec46699c02de678fb6a20157cfc8a8fdbcebe9580f"
+    },
+    "bio_1k_test.arrow": {
+      "url": "https://huggingface.co/datasets/alex-karev/biographies/resolve/f724ba85ffd01f046626c193c1a99385a7a60038/data/1k/test/data-00000-of-00001.arrow",
+      "bytes": 1529584,
+      "sha256": "b4fa49268ce4b37dc87ded419cff7b7e7a034a3b541e1556e326d72f4686f7ee"
+    },
+    "squad_train.json": {
+      "url": "https://rajpurkar.github.io/SQuAD-explorer/dataset/train-v1.1.json",
+      "bytes": 30288272,
+      "sha256": "3527663986b8295af4f7fcdff1ba1ff3f72d07d61a20f487cb238a6ef92fd955"
+    },
+    "squad_dev.json": {
+      "url": "https://rajpurkar.github.io/SQuAD-explorer/dataset/dev-v1.1.json",
+      "bytes": 4854279,
+      "sha256": "95aa6a52d5d6a735563366753ca50492a658031da74f301ac5238b03966972c9"
+    }
+  },
+  "biographies_revision": "f724ba85ffd01f046626c193c1a99385a7a60038",
+  "licenses": {
+    "biographies": "Apache-2.0",
+    "squad_v1_1": "CC-BY-SA-4.0"
+  }
+}

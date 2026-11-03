@@ -1,0 +1,96 @@
+{
+  "status": "candidate_allocation_pending_learning_and_unlearning_qualification",
+  "training_enabled": false,
+  "executable": false,
+  "base_model": "meta-llama/Llama-2-7b-chat-hf",
+  "base_revision": "f5db02db724555f92da89c216ac04704f23d4590",
+  "formal_unlearning_target": 400,
+  "formal_control_target_max": 400,
+  "per_algorithm": {
+    "NPO": {
+      "biographies": {
+        "train": 20,
+        "validation": 10,
+        "test": 10
+      },
+      "squad": {
+        "train": 20,
+        "validation": 10,
+        "test": 10
+      }
+    },
+    "SimNPO": {
+      "biographies": {
+        "train": 20,
+        "validation": 10,
+        "test": 10
+      },
+      "squad": {
+        "train": 20,
+        "validation": 10,
+        "test": 10
+      }
+    },
+    "GradDiff": {
+      "biographies": {
+        "train": 20,
+        "validation": 10,
+        "test": 10
+      },
+      "squad": {
+        "train": 20,
+        "validation": 10,
+        "test": 10
+      }
+    },
+    "RMU": {
+      "biographies": {
+        "train": 20,
+        "validation": 10,
+        "test": 10
+      },
+      "squad": {
+        "train": 20,
+        "validation": 10,
+        "test": 10
+      }
+    },
+    "UNDIAL": {
+      "biographies": {
+        "train": 20,
+        "validation": 10,
+        "test": 10
+      },
+      "squad": {
+        "train": 20,
+        "validation": 10,
+        "test": 10
+      }
+    }
+  },
+  "pilot": {
+    "suite": "official-knowledge-pilot-v1",
+    "sources": {
+      "biographies": {
+        "learning_pool_people": 120,
+        "deletion_candidates": 20,
+        "initial_distinct_deletion_targets": 2
+      },
+      "squad": {
+        "learning_pool_articles": 40,
+        "deletion_candidates": 20,
+        "initial_distinct_deletion_targets": 2
+      }
+    },
+    "learning_models": 2,
+    "unlearning_runs": 20,
+    "distinct_continuing_training_controls": 8,
+    "initial_distinct_deletion_targets_total": 4,
+    "all_pilot_learning_pool_units_excluded_from_formal_targets": true
+  },
+  "requires_unique_deletion_content": true,
+  "target_ids_assigned": false,
+  "requires_effect_qualification": true,
+  "historical_allocation": "unlearning_400_allocation.20261030.historical.json",
+  "runbook": "KNOWLEDGE_PILOT_RUNBOOK_ZH.md"
+}

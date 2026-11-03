@@ -1,0 +1,499 @@
+{
+  "schema_version": 3,
+  "updated_on": "2026-11-03",
+  "status": "planned_200_lora_200_full_parameter_pending_qualification",
+  "training_enabled": false,
+  "executable": false,
+  "base_model": "meta-llama/Llama-2-7b-chat-hf",
+  "base_revision": "f5db02db724555f92da89c216ac04704f23d4590",
+  "upstream_commit": "17cbbc87192e6934deb92875c359c91bbd837fb4",
+  "formal_unlearning_target": 400,
+  "formal_control_target_max": 400,
+  "formal_total_models_with_max_controls": 800,
+  "update_mode_applies_to": "unlearning_stage",
+  "learning_parent_update_mode": "full_parameter",
+  "formal_methods": [
+    "NPO",
+    "SimNPO",
+    "GradDiff",
+    "UNDIAL"
+  ],
+  "separate_extension_methods": {
+    "RMU": {
+      "reason": "Original method selects local layers; do not count it as literal full-parameter training.",
+      "included_in_formal_400": false
+    }
+  },
+  "per_algorithm": {
+    "NPO": {
+      "biographies": {
+        "train": 25,
+        "validation": 13,
+        "test": 12,
+        "total": 50,
+        "by_update_mode": {
+          "lora": {
+            "train": 13,
+            "validation": 6,
+            "test": 6,
+            "total": 25
+          },
+          "full_parameter": {
+            "train": 12,
+            "validation": 7,
+            "test": 6,
+            "total": 25
+          }
+        }
+      },
+      "squad": {
+        "train": 25,
+        "validation": 12,
+        "test": 13,
+        "total": 50,
+        "by_update_mode": {
+          "lora": {
+            "train": 12,
+            "validation": 6,
+            "test": 7,
+            "total": 25
+          },
+          "full_parameter": {
+            "train": 13,
+            "validation": 6,
+            "test": 6,
+            "total": 25
+          }
+        }
+      }
+    },
+    "SimNPO": {
+      "biographies": {
+        "train": 25,
+        "validation": 13,
+        "test": 12,
+        "total": 50,
+        "by_update_mode": {
+          "lora": {
+            "train": 13,
+            "validation": 6,
+            "test": 6,
+            "total": 25
+          },
+          "full_parameter": {
+            "train": 12,
+            "validation": 7,
+            "test": 6,
+            "total": 25
+          }
+        }
+      },
+      "squad": {
+        "train": 25,
+        "validation": 12,
+        "test": 13,
+        "total": 50,
+        "by_update_mode": {
+          "lora": {
+            "train": 12,
+            "validation": 6,
+            "test": 7,
+            "total": 25
+          },
+          "full_parameter": {
+            "train": 13,
+            "validation": 6,
+            "test": 6,
+            "total": 25
+          }
+        }
+      }
+    },
+    "GradDiff": {
+      "biographies": {
+        "train": 25,
+        "validation": 12,
+        "test": 13,
+        "total": 50,
+        "by_update_mode": {
+          "lora": {
+            "train": 13,
+            "validation": 6,
+            "test": 6,
+            "total": 25
+          },
+          "full_parameter": {
+            "train": 12,
+            "validation": 6,
+            "test": 7,
+            "total": 25
+          }
+        }
+      },
+      "squad": {
+        "train": 25,
+        "validation": 13,
+        "test": 12,
+        "total": 50,
+        "by_update_mode": {
+          "lora": {
+            "train": 12,
+            "validation": 7,
+            "test": 6,
+            "total": 25
+          },
+          "full_parameter": {
+            "train": 13,
+            "validation": 6,
+            "test": 6,
+            "total": 25
+          }
+        }
+      }
+    },
+    "UNDIAL": {
+      "biographies": {
+        "train": 25,
+        "validation": 12,
+        "test": 13,
+        "total": 50,
+        "by_update_mode": {
+          "lora": {
+            "train": 13,
+            "validation": 6,
+            "test": 6,
+            "total": 25
+          },
+          "full_parameter": {
+            "train": 12,
+            "validation": 6,
+            "test": 7,
+            "total": 25
+          }
+        }
+      },
+      "squad": {
+        "train": 25,
+        "validation": 13,
+        "test": 12,
+        "total": 50,
+        "by_update_mode": {
+          "lora": {
+            "train": 12,
+            "validation": 7,
+            "test": 6,
+            "total": 25
+          },
+          "full_parameter": {
+            "train": 13,
+            "validation": 6,
+            "test": 6,
+            "total": 25
+          }
+        }
+      }
+    }
+  },
+  "allocation_cells": [
+    {
+      "algorithm": "NPO",
+      "source": "biographies",
+      "update_mode": "lora",
+      "train": 13,
+      "validation": 6,
+      "test": 6,
+      "total": 25
+    },
+    {
+      "algorithm": "NPO",
+      "source": "biographies",
+      "update_mode": "full_parameter",
+      "train": 12,
+      "validation": 7,
+      "test": 6,
+      "total": 25
+    },
+    {
+      "algorithm": "NPO",
+      "source": "squad",
+      "update_mode": "lora",
+      "train": 12,
+      "validation": 6,
+      "test": 7,
+      "total": 25
+    },
+    {
+      "algorithm": "NPO",
+      "source": "squad",
+      "update_mode": "full_parameter",
+      "train": 13,
+      "validation": 6,
+      "test": 6,
+      "total": 25
+    },
+    {
+      "algorithm": "SimNPO",
+      "source": "biographies",
+      "update_mode": "lora",
+      "train": 13,
+      "validation": 6,
+      "test": 6,
+      "total": 25
+    },
+    {
+      "algorithm": "SimNPO",
+      "source": "biographies",
+      "update_mode": "full_parameter",
+      "train": 12,
+      "validation": 7,
+      "test": 6,
+      "total": 25
+    },
+    {
+      "algorithm": "SimNPO",
+      "source": "squad",
+      "update_mode": "lora",
+      "train": 12,
+      "validation": 6,
+      "test": 7,
+      "total": 25
+    },
+    {
+      "algorithm": "SimNPO",
+      "source": "squad",
+      "update_mode": "full_parameter",
+      "train": 13,
+      "validation": 6,
+      "test": 6,
+      "total": 25
+    },
+    {
+      "algorithm": "GradDiff",
+      "source": "biographies",
+      "update_mode": "lora",
+      "train": 13,
+      "validation": 6,
+      "test": 6,
+      "total": 25
+    },
+    {
+      "algorithm": "GradDiff",
+      "source": "biographies",
+      "update_mode": "full_parameter",
+      "train": 12,
+      "validation": 6,
+      "test": 7,
+      "total": 25
+    },
+    {
+      "algorithm": "GradDiff",
+      "source": "squad",
+      "update_mode": "lora",
+      "train": 12,
+      "validation": 7,
+      "test": 6,
+      "total": 25
+    },
+    {
+      "algorithm": "GradDiff",
+      "source": "squad",
+      "update_mode": "full_parameter",
+      "train": 13,
+      "validation": 6,
+      "test": 6,
+      "total": 25
+    },
+    {
+      "algorithm": "UNDIAL",
+      "source": "biographies",
+      "update_mode": "lora",
+      "train": 13,
+      "validation": 6,
+      "test": 6,
+      "total": 25
+    },
+    {
+      "algorithm": "UNDIAL",
+      "source": "biographies",
+      "update_mode": "full_parameter",
+      "train": 12,
+      "validation": 6,
+      "test": 7,
+      "total": 25
+    },
+    {
+      "algorithm": "UNDIAL",
+      "source": "squad",
+      "update_mode": "lora",
+      "train": 12,
+      "validation": 7,
+      "test": 6,
+      "total": 25
+    },
+    {
+      "algorithm": "UNDIAL",
+      "source": "squad",
+      "update_mode": "full_parameter",
+      "train": 13,
+      "validation": 6,
+      "test": 6,
+      "total": 25
+    }
+  ],
+  "target_ids_assigned": false,
+  "requires_unique_deletion_content": true,
+  "requires_effect_qualification": true,
+  "learning_pools": {
+    "biographies": {
+      "published_usable_units": 993,
+      "pilot_excluded_units": 120,
+      "available_outside_pilot": 873,
+      "formal_targets": 200,
+      "reserve_targets": 50,
+      "dedicated_retain_units": 100,
+      "formal_learning_units": 350,
+      "learning_records": 42000,
+      "tokens_per_epoch_estimate": 750000,
+      "token_count_is_estimate": true
+    },
+    "squad": {
+      "published_usable_units": 476,
+      "pilot_excluded_units": 40,
+      "available_outside_pilot": 436,
+      "formal_targets": 200,
+      "reserve_targets": 50,
+      "dedicated_retain_units": 50,
+      "formal_learning_units": 300,
+      "training_qa_groups": 12000,
+      "assessment_question_groups": 6000,
+      "learning_records_estimate": 25100,
+      "tokens_per_epoch_estimate": 3040000,
+      "token_count_is_estimate": true
+    }
+  },
+  "detector_split": {
+    "train": 200,
+    "validation": 100,
+    "test": 100
+  },
+  "lora_split": {
+    "train": 100,
+    "validation": 50,
+    "test": 50
+  },
+  "full_parameter_split": {
+    "train": 100,
+    "validation": 50,
+    "test": 50
+  },
+  "lora_initial_recipe": {
+    "rank": 16,
+    "alpha": 32,
+    "dropout": 0.05,
+    "bias": "none",
+    "target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj",
+      "gate_proj",
+      "up_proj",
+      "down_proj"
+    ],
+    "learning_rate": 0.0001,
+    "trainable_parameters": 39976960,
+    "implemented_and_qualified": false
+  },
+  "pilot": {
+    "suite": "official-knowledge-pilot-v1",
+    "learning_models": 2,
+    "sources": {
+      "biographies": {
+        "learning_pool_people": 120,
+        "initial_distinct_deletion_targets": 2
+      },
+      "squad": {
+        "learning_pool_articles": 40,
+        "initial_distinct_deletion_targets": 2
+      }
+    },
+    "planned_core_unlearning_runs": 32,
+    "planned_distinct_control_max": 16,
+    "initial_distinct_deletion_targets_total": 4,
+    "all_pilot_learning_pool_units_excluded_from_formal_targets": true,
+    "last_observed_biography_optimizer_step": 1125,
+    "planned_biography_optimizer_steps": 2250,
+    "last_observed_state": "stopped_during_checkpoint_save_by_own_memory_guard",
+    "qualified_learning_parent_count": 0
+  },
+  "storage": {
+    "raw_activation_bytes_per_model": 1572864,
+    "activation_model_count_max": 800,
+    "lora_adapters_with_controls_max": 400,
+    "full_parameter_final_models_with_controls_max": 400,
+    "full_weight_retention_budget_tb": [
+      6.5,
+      7.5
+    ],
+    "compact_archive_budget_tb": [
+      0.5,
+      0.7
+    ],
+    "representative_full_models": 32,
+    "automatic_hdd_cleanup": false
+  },
+  "runtime_budget": {
+    "unit": "gpu_hours",
+    "stages": {
+      "paired_pilots": [
+        20,
+        50
+      ],
+      "formal_learning_parents": [
+        140,
+        280
+      ],
+      "full_parameter_unlearning": [
+        80,
+        240
+      ],
+      "lora_unlearning": [
+        20,
+        80
+      ],
+      "ordinary_controls": [
+        60,
+        180
+      ],
+      "evaluation_and_extraction": [
+        150,
+        400
+      ]
+    },
+    "subtotal": [
+      470,
+      1230
+    ],
+    "buffer_fraction": 0.25,
+    "rounded_total": [
+      600,
+      1550
+    ],
+    "single_gpu_days": [
+      25,
+      65
+    ],
+    "two_equivalent_parallel_jobs_ideal_days": [
+      13,
+      33
+    ],
+    "lora_timing_measured": false,
+    "article_timing_measured": false
+  },
+  "documents": {
+    "zh": "UNLEARNING_400_BALANCED_PLAN_ZH.md",
+    "en": "UNLEARNING_400_BALANCED_PLAN_EN.md"
+  },
+  "runbook": "KNOWLEDGE_PILOT_RUNBOOK_ZH.md",
+  "historical_allocation": "unlearning_400_allocation.20261101.historical.json"
+}

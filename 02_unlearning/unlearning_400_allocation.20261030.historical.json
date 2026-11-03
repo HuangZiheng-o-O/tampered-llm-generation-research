@@ -1,0 +1,105 @@
+{
+  "status": "historical_allocation_pending_source_revision",
+  "executable": false,
+  "review_document": "EXPERT_DATA_REVIEW_AND_IMPROVEMENTS_ZH.md",
+  "allocation_note": "Retained original 135/135/130 source allocation for provenance. The proposed 200 biography/200 article allocation requires pilot qualification and frozen real target IDs.",
+  "base_model": "meta-llama/Llama-2-7b-chat-hf",
+  "base_revision": null,
+  "formal_unlearning_target": 400,
+  "formal_control_target": 400,
+  "per_algorithm": {
+    "NPO": {
+      "tofu": {
+        "train": 14,
+        "validation": 7,
+        "test": 6
+      },
+      "muse_news": {
+        "train": 13,
+        "validation": 7,
+        "test": 7
+      },
+      "duet": {
+        "train": 13,
+        "validation": 6,
+        "test": 7
+      }
+    },
+    "SimNPO": {
+      "tofu": {
+        "train": 14,
+        "validation": 7,
+        "test": 6
+      },
+      "muse_news": {
+        "train": 13,
+        "validation": 7,
+        "test": 7
+      },
+      "duet": {
+        "train": 13,
+        "validation": 6,
+        "test": 7
+      }
+    },
+    "GradDiff": {
+      "tofu": {
+        "train": 14,
+        "validation": 7,
+        "test": 6
+      },
+      "muse_news": {
+        "train": 13,
+        "validation": 7,
+        "test": 7
+      },
+      "duet": {
+        "train": 13,
+        "validation": 6,
+        "test": 7
+      }
+    },
+    "RMU": {
+      "tofu": {
+        "train": 14,
+        "validation": 7,
+        "test": 6
+      },
+      "muse_news": {
+        "train": 13,
+        "validation": 7,
+        "test": 7
+      },
+      "duet": {
+        "train": 13,
+        "validation": 6,
+        "test": 7
+      }
+    },
+    "UNDIAL": {
+      "tofu": {
+        "train": 14,
+        "validation": 7,
+        "test": 6
+      },
+      "muse_news": {
+        "train": 13,
+        "validation": 7,
+        "test": 7
+      },
+      "duet": {
+        "train": 13,
+        "validation": 6,
+        "test": 7
+      }
+    }
+  },
+  "pilot": {
+    "development_per_method_per_source": 2,
+    "confirmation_per_method_per_source": 1,
+    "total": 45,
+    "included_in_formal": false
+  },
+  "requires_unique_deletion_content": true,
+  "target_ids_assigned": false
+}
