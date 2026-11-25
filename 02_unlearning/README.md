@@ -1,5 +1,7 @@
 # 400-model pure-LoRA unlearning generation
 
+Data collection explained: [English](DATA_COLLECTION_EN.md) | [中文](DATA_COLLECTION_ZH.md).
+
 This directory now includes the **actual production support code** used for the
 completed 400-model batch, alongside the pinned official OpenUnlearning submodule.
 The 55 Python files in `official_knowledge/` and `official_pilot/` were checked
