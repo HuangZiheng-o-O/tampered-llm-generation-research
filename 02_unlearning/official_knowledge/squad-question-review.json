@@ -1,0 +1,13 @@
+{
+  "review_scope": "Initial development, confirmation and retention probes; questions are kept verbatim or excluded, never rewritten.",
+  "excluded_question_ids": {
+    "5725d1a6ec44d21400f3d625": "The question refers to an unnamed park; the article describes several parks.",
+    "5725d297271a42140099d24a": "The question does not identify which Spaniards or historical event it refers to.",
+    "56e761d037bdd419002c3f15": "The phrase these teachers has no antecedent in the standalone question.",
+    "572ea0bedfa6aa1500f8d220": "The grading procedure and examination are not identified in the question.",
+    "56f8cb539b226e1400dd101d": "The country has multiple parliamentary elections; no election is identified.",
+    "56f8cfb29e9bad19000a056c": "The country has multiple coups; no particular coup is identified.",
+    "5728bf712ca10214002da6db": "The question does not identify which speech by Toomas Hendrik Ilves.",
+    "5728d0114b864d1900164ea4": "The question asks for a number of minorities, but the reference gives a population threshold."
+  }
+}
